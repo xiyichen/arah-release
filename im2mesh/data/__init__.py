@@ -10,6 +10,9 @@ from im2mesh.data.h36m import (
 from im2mesh.data.people_snapshot import (
     PeopleSnapshotDataset
 )
+from im2mesh.data.iphone import (
+    IPHONEDataset
+)
 from im2mesh.data.zju_mocap_odp import (
     ZJUMOCAPODPDataset
 )
@@ -22,5 +25,6 @@ __all__ = [
     ZJUMOCAPDataset,
     ZJUMOCAPODPDataset,
     H36MDataset,
-    PeopleSnapshotDataset
+    PeopleSnapshotDataset,
+    IPHONEDataset
 ]
