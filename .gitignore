@@ -121,3 +121,15 @@ build
 *.prof
 .nfs*
 deprecated/
+
+*.png
+*.txt
+*.out
+*.sh
+
+logs/
+out/
+output/
+data/
+debug/
+body_models/
