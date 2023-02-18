@@ -84,9 +84,9 @@ if __name__ == '__main__':
         for img_file in img_files:
             print ('Processing: {}'.format(img_file))
             frame_id = int(img_file.split('/')[-1].split('.')[0])
-            K = cameras['K'][cam_idx][frame_id].tolist()
-            D = cameras['D'][cam_idx][frame_id].tolist()
-            R = cameras['R'][cam_idx][frame_id].tolist()
+            K = cameras['K'][cam_idx][frame_id]
+            D = cameras['D'][cam_idx][frame_id]
+            R = cameras['R'][cam_idx][frame_id]
 
             R_np = np.array(R)
             T = cameras['T'][cam_idx][frame_id]
