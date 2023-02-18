@@ -237,6 +237,38 @@ def get_dataset(mode, cfg, view_split=None, subsampling_rate=None, start_frame=N
             sample_inside=inside_weight > 0,
             erode_mask=erode_mask,
         )
+    elif dataset_type == 'iphone':
+        num_fg_samples = cfg['data']['num_fg_samples']
+        num_bg_samples = cfg['data']['num_bg_samples']
+
+        off_surface_thr = cfg['data']['off_surface_thr']
+        inside_thr = cfg['data']['inside_thr']
+        box_margin = cfg['data']['box_margin']
+        sampling = cfg['data']['sampling']
+        erode_mask = cfg['data']['erode_mask']
+        sample_reg_surface = cfg['data']['sample_reg_surface']
+
+        inside_weight = cfg['training']['inside_weight']
+
+        dataset = data.IPHONEDataset(
+            dataset_folder=dataset_folder,
+            subjects=split,
+            mode=mode,
+            img_size=(480, 360),
+            num_fg_samples=num_fg_samples,
+            num_bg_samples=num_bg_samples,
+            sampling_rate=subsampling_rate,
+            start_frame=start_frame,
+            end_frame=end_frame,
+            views=view_split,
+            off_surface_thr=off_surface_thr,
+            inside_thr=inside_thr,
+            box_margin=box_margin,
+            sampling=sampling,
+            sample_reg_surface=sample_reg_surface,
+            sample_inside=inside_weight > 0,
+            erode_mask=erode_mask,
+        )
     elif dataset_type == 'zju_mocap_odp':
         num_fg_samples = cfg['data']['num_fg_samples']
         num_bg_samples = cfg['data']['num_bg_samples']
