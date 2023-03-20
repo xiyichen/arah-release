@@ -223,7 +223,7 @@ _, uvs, faces = read_obj(
 )
 faces = torch.tensor(faces, device=device)
 smpl_out_dir = os.path.join(base_dir, 'models')
-arah_optimized_dir = os.path.join(base_dir, 'arah_optimized_smpl_projections')
+arah_optimized_dir = os.path.join(base_dir, 'arah_optimized_smpl_projections_fixed')
 if not os.path.exists(smpl_out_dir):
     os.makedirs(smpl_out_dir)
 if not os.path.exists(arah_optimized_dir):
@@ -248,7 +248,7 @@ for img_file in img_files:
     R = cam_params['R'][frame_id]
     R_np = np.array(R)
     T = cam_params['T'][frame_id]
-    T_np = np.array(T).reshape(3, 1) / 1000.0
+    T_np = np.array(T).reshape(3, 1)
     T = T_np.tolist()
     frame_index = int(os.path.basename(img_file)[:-4])
     root_orient = Rot.from_rotvec(np.array(smpl_params[frame_index]['Rh']).reshape([-1])).as_matrix()
